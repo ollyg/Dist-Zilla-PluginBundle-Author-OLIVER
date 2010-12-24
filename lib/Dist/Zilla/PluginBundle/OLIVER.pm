@@ -25,7 +25,9 @@ has account => (
   default => sub { $_[0]->_find_account }
 );
 
-sub _find_dist {
+sub _find_account {
+    my $self = shift;
+
     my $root = dir($ARGV[0] || '.git');
     my $ini = $root->file('config');
 
