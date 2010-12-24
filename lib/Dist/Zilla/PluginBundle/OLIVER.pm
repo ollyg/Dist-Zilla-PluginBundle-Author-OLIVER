@@ -31,23 +31,23 @@ sub _find_account {
     my $root = dir($ARGV[0] || '.git');
     my $ini = $root->file('config');
 
-    die "this bundle needs a .git/config file, and you don't have one\n"
+    die "OLIVER: this bundle needs a .git/config file, and you don't have one\n"
         unless -e $ini;
 
     my $fh = $ini->openr;
     my $config = Config::INI::Reader->read_handle($fh);
 
-    die "no 'origin' remote found in .git/config\n"
+    die "OLIVER: no 'origin' remote found in .git/config\n"
         unless exists $config->{'remote "origin"'};
 
     my $url = $config->{'remote "origin"'}->{'url'};
-    die "no url found for remote 'origin'\n"
+    die "OLIVER: no url found for remote 'origin'\n"
         unless $url and length $url;
 
     my $dist = $self->dist;
     my ($account) = ($url =~ m{[:/](.+)/$dist.git$});
 
-    die "no github account name found in .git/config\n"
+    die "OLIVER: no github account name found in .git/config\n"
         unless $account and length $account;
 
     return $account;
@@ -64,14 +64,14 @@ sub _find_dist {
     my $root = dir($ARGV[0] || '.');
     my $ini = $root->file('dist.ini');
 
-    die "this bundle needs a dist.ini file, and you don't have one\n"
+    die "OLIVER: this bundle needs a dist.ini file, and you don't have one\n"
         unless -e $ini;
 
     my $fh = $ini->openr;
     my $config = Config::INI::Reader->read_handle($fh);
     my $dist = $config->{'_'}->{'dist'};
 
-    die "no dist option found in dist.ini\n"
+    die "OLIVER: no dist option found in dist.ini\n"
         unless $dist and length $dist;
 
     return $dist;
