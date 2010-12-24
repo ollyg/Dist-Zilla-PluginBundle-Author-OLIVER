@@ -1,5 +1,5 @@
 ---
-abstract: 'BeLike::OLIVER when you build your dists'
+abstract: "Dists like OLIVER's"
 author:
   - 'Oliver Gorwits <oliver@cpan.org>'
 build_requires: {}
@@ -26,4 +26,4 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-OLIVER
   homepage: http://github.com/ollyg/Dist-Zilla-PluginBundle-OLIVER/wiki
   repository: git://github.com/ollyg/Dist-Zilla-PluginBundle-OLIVER.git
-version: 1.103580
+version: 1.103581

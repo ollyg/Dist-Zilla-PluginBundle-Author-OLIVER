@@ -9,7 +9,7 @@ use ExtUtils::MakeMaker 6.31;
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'BeLike::OLIVER when you build your dists',
+  'ABSTRACT' => 'Dists like OLIVER\'s',
   'AUTHOR' => 'Oliver Gorwits <oliver@cpan.org>',
   'BUILD_REQUIRES' => {},
   'CONFIGURE_REQUIRES' => {
@@ -30,7 +30,7 @@ my %WriteMakefileArgs = (
     'Moose' => '0',
     'Path::Class' => '0'
   },
-  'VERSION' => '1.103580',
+  'VERSION' => '1.103581',
   'test' => {
     'TESTS' => ''
   }

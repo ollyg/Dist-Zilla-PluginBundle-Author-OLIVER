@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::OLIVER;
 BEGIN {
-  $Dist::Zilla::PluginBundle::OLIVER::VERSION = '1.103580';
+  $Dist::Zilla::PluginBundle::OLIVER::VERSION = '1.103581';
 }
 
 use Moose;
@@ -99,7 +99,7 @@ sub configure {
 
     my %basic_opts = (
         '-bundle' => '@Basic',
-        '-remove' => 'Readme',
+        '-remove' => [ 'Readme' ],
     );
 
     if ($self->no_cpan) {
@@ -137,7 +137,7 @@ __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
 
-# ABSTRACT: BeLike::OLIVER when you build your dists
+# ABSTRACT: Dists like OLIVER's
 
 
 __END__
@@ -145,20 +145,20 @@ __END__
 
 =head1 NAME
 
-Dist::Zilla::PluginBundle::OLIVER - BeLike::OLIVER when you build your dists
+Dist::Zilla::PluginBundle::OLIVER - Dists like OLIVER's
 
 =head1 VERSION
 
-version 1.103580
+version 1.103581
 
 =head1 DESCRIPTION
 
 The is the plugin bundle that OLIVER uses. It is equivalent to:
 
  [MetaResources]
- homepage       = http://github.com/<ACCOUNT>/<DIST>/wiki
- bugtracker.web = https://rt.cpan.org/Public/Dist/Display.html?Name=<DIST>
- repository.url = git://github.com/<ACCOUNT>/<DIST>.git
+ homepage       = http://github.com/ACCOUNT/DIST/wiki
+ bugtracker.web = https://rt.cpan.org/Public/Dist/Display.html?Name=DIST
+ repository.url = git://github.com/ACCOUNT/DIST.git
  
  [ReadmeFromPod]
  [@Filter]
@@ -183,8 +183,8 @@ The is the plugin bundle that OLIVER uses. It is equivalent to:
 
 =head1 CONFIGURATION
 
-In the above, C<< <DIST> >> will be substituted for the value of the C<name>
-option in your C<dist.ini> file. Also, C<< <ACCOUNT> >> will be substituted
+In the above, C<DIST> will be substituted for the value of the C<name>
+option in your C<dist.ini> file. Also, C<ACCOUNT> will be substituted
 for your L<http://github.com> account name. Both of these can be overriden
 by providing the C<dist> or C<account> options to this Bundle in C<dist.ini>.
 
