@@ -28,7 +28,7 @@ has account => (
 sub _find_account {
     my $self = shift;
 
-    my $root = dir($ARGV[0] || '.git');
+    my $root = dir('.git');
     my $ini = $root->file('config');
 
     die "OLIVER: this bundle needs a .git/config file, and you don't have one\n"
@@ -61,7 +61,7 @@ has dist => (
 );
 
 sub _find_dist {
-    my $root = dir($ARGV[0] || '.');
+    my $root = dir('.');
     my $ini = $root->file('dist.ini');
 
     die "OLIVER: this bundle needs a dist.ini file, and you don't have one\n"
@@ -69,9 +69,9 @@ sub _find_dist {
 
     my $fh = $ini->openr;
     my $config = Config::INI::Reader->read_handle($fh);
-    my $dist = $config->{'_'}->{'dist'};
+    my $dist = $config->{'_'}->{'name'};
 
-    die "OLIVER: no dist option found in dist.ini\n"
+    die "OLIVER: no name option found in dist.ini\n"
         unless $dist and length $dist;
 
     return $dist;
@@ -121,7 +121,7 @@ sub configure {
 
     # CommitBuild -must- come before @Git
     $self->add_plugins([ 'Git::CommitBuild' => {
-        'branch' => undef,
+        'branch' => '',
         'release_branch' => 'master',
     }]);
 
