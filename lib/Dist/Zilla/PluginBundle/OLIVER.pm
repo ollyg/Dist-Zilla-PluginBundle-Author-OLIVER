@@ -96,7 +96,7 @@ sub configure {
 
     my %basic_opts = (
         '-bundle' => '@Basic',
-        '-remove' => 'Readme',
+        '-remove' => [ 'Readme' ],
     );
 
     if ($self->no_cpan) {
