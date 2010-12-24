@@ -134,16 +134,16 @@ __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
 
-# ABSTRACT: BeLike::OLIVER when you build your dists
+# ABSTRACT: Dists like OLIVER's
 
 =head1 DESCRIPTION
 
 The is the plugin bundle that OLIVER uses. It is equivalent to:
 
  [MetaResources]
- homepage       = http://github.com/<ACCOUNT>/<DIST>/wiki
- bugtracker.web = https://rt.cpan.org/Public/Dist/Display.html?Name=<DIST>
- repository.url = git://github.com/<ACCOUNT>/<DIST>.git
+ homepage       = http://github.com/ACCOUNT/DIST/wiki
+ bugtracker.web = https://rt.cpan.org/Public/Dist/Display.html?Name=DIST
+ repository.url = git://github.com/ACCOUNT/DIST.git
  
  [ReadmeFromPod]
  [@Filter]
@@ -168,8 +168,8 @@ The is the plugin bundle that OLIVER uses. It is equivalent to:
 
 =head1 CONFIGURATION
 
-In the above, C<< <DIST> >> will be substituted for the value of the C<name>
-option in your C<dist.ini> file. Also, C<< <ACCOUNT> >> will be substituted
+In the above, C<DIST> will be substituted for the value of the C<name>
+option in your C<dist.ini> file. Also, C<ACCOUNT> will be substituted
 for your L<http://github.com> account name. Both of these can be overriden
 by providing the C<dist> or C<account> options to this Bundle in C<dist.ini>.
 
