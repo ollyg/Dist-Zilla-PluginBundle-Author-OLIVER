@@ -1,0 +1,69 @@
+NAME
+    Dist::Zilla::PluginBundle::OLIVER - BeLike::OLIVER when you build your
+    dists
+
+VERSION
+    version 1.103580
+
+DESCRIPTION
+    The is the plugin bundle that OLIVER uses. It is equivalent to:
+
+     [MetaResources]
+     homepage       = http://github.com/<ACCOUNT>/<DIST>/wiki
+     bugtracker.web = https://rt.cpan.org/Public/Dist/Display.html?Name=<DIST>
+     repository.url = git://github.com/<ACCOUNT>/<DIST>.git
+     
+ [ReadmeFromPod]
+     [@Filter]
+     -bundle = @Basic
+     -remove = Readme
+     
+ [AutoVersion]
+     [NextRelease]
+     [PkgVersion]
+     [PodWeaver]
+     [AutoPrereqs]
+     
+ [PruneFiles]
+     filenames = dist.ini
+     
+ [Git::CommitBuild]
+     branch =
+     release_branch = master
+
+     [@Git]
+     commit_msg = %c
+
+CONFIGURATION
+    In the above, "<DIST>" will be substituted for the value of the "name"
+    option in your "dist.ini" file. Also, "<ACCOUNT>" will be substituted
+    for your <http://github.com> account name. Both of these can be
+    overriden by providing the "dist" or "account" options to this Bundle in
+    "dist.ini".
+
+    If you provide the "no_cpan" option with a true value to the bundle,
+    then the upload to CPAN will be suppressed.
+
+TIPS
+    Do not include a "NAME", "VERSION", "AUTHOR" or "LICENSE" POD section in
+    your code, they will be provided automatically. However please do
+    include an abstract for documented libraries via a comment like so:
+
+     # ABSTRACT: here is my abstract statement
+
+    The bundle is desgined for projects which are hosted on "github". More
+    so, the project should have a "master" branch which is where the *built*
+    code is committed, and a *separate* branch where you do code
+    development. The module author uses a "devel" branch for this purpose.
+    On "github" you can then leave the "master" branch as the default branch
+    for web browsing.
+
+AUTHOR
+    Oliver Gorwits <oliver@cpan.org>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2010 by Oliver Gorwits.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+

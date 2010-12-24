@@ -1,4 +1,7 @@
 package Dist::Zilla::PluginBundle::OLIVER;
+BEGIN {
+  $Dist::Zilla::PluginBundle::OLIVER::VERSION = '1.103580';
+}
 
 use Moose;
 with 'Dist::Zilla::Role::PluginBundle::Easy';
@@ -136,6 +139,18 @@ no Moose;
 
 # ABSTRACT: BeLike::OLIVER when you build your dists
 
+
+__END__
+=pod
+
+=head1 NAME
+
+Dist::Zilla::PluginBundle::OLIVER - BeLike::OLIVER when you build your dists
+
+=head1 VERSION
+
+version 1.103580
+
 =head1 DESCRIPTION
 
 The is the plugin bundle that OLIVER uses. It is equivalent to:
@@ -190,4 +205,16 @@ is committed, and a I<separate> branch where you do code development. The
 module author uses a C<devel> branch for this purpose. On C<github> you can
 then leave the C<master> branch as the default branch for web browsing.
 
+=head1 AUTHOR
+
+Oliver Gorwits <oliver@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Oliver Gorwits.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
