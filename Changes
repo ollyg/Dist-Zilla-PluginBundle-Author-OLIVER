@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+  * Switch to using MetaResourcesFromGit
+
 1.103581  2010-12-24 21:25:22 Europe/London
 
   * Initial release on an unsuspecting CPAN.
