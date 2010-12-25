@@ -14,9 +14,6 @@ has no_cpan => (
 sub configure {
     my $self = shift;
 
-    my $dist    = $self->dist;
-    my $account = $self->account;
-
     $self->add_plugins(qw/
         MetaResourcesFromGit
         ReadmeFromPod
