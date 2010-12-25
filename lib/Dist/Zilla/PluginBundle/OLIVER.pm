@@ -1,17 +1,10 @@
 package Dist::Zilla::PluginBundle::OLIVER;
 BEGIN {
-  $Dist::Zilla::PluginBundle::OLIVER::VERSION = '1.103581';
+  $Dist::Zilla::PluginBundle::OLIVER::VERSION = '1.103592';
 }
 
 use Moose;
 with 'Dist::Zilla::Role::PluginBundle::Easy';
-
-use Dist::Zilla::PluginBundle::Basic;
-use Dist::Zilla::PluginBundle::Git;
-
-# both available due to Dist::Zilla
-use Path::Class 'dir';
-use Config::INI::Reader;
 
 # if set, trigger FakeRelease instead of UploadToCPAN
 has no_cpan => (
@@ -21,81 +14,13 @@ has no_cpan => (
   default => sub { $_[0]->payload->{no_cpan} }
 );
 
-has account => (
-  is      => 'ro',
-  isa     => 'Str',
-  lazy    => 1,
-  default => sub { $_[0]->_find_account }
-);
-
-sub _find_account {
-    my $self = shift;
-
-    my $root = dir('.git');
-    my $ini = $root->file('config');
-
-    die "OLIVER: this bundle needs a .git/config file, and you don't have one\n"
-        unless -e $ini;
-
-    my $fh = $ini->openr;
-    my $config = Config::INI::Reader->read_handle($fh);
-
-    die "OLIVER: no 'origin' remote found in .git/config\n"
-        unless exists $config->{'remote "origin"'};
-
-    my $url = $config->{'remote "origin"'}->{'url'};
-    die "OLIVER: no url found for remote 'origin'\n"
-        unless $url and length $url;
-
-    my $dist = $self->dist;
-    my ($account) = ($url =~ m{[:/](.+)/$dist.git$});
-
-    die "OLIVER: no github account name found in .git/config\n"
-        unless $account and length $account;
-
-    return $account;
-}
-
-has dist => (
-  is      => 'ro',
-  isa     => 'Str',
-  lazy    => 1,
-  default => sub { $_[0]->_find_dist }
-);
-
-sub _find_dist {
-    my $root = dir('.');
-    my $ini = $root->file('dist.ini');
-
-    die "OLIVER: this bundle needs a dist.ini file, and you don't have one\n"
-        unless -e $ini;
-
-    my $fh = $ini->openr;
-    my $config = Config::INI::Reader->read_handle($fh);
-    my $dist = $config->{'_'}->{'name'};
-
-    die "OLIVER: no name option found in dist.ini\n"
-        unless $dist and length $dist;
-
-    return $dist;
-}
-
 sub configure {
     my $self = shift;
 
-    my $dist    = $self->dist;
-    my $account = $self->account;
-
-    $self->add_plugins([ 'MetaResources' => {
-        'homepage'
-            => "http://github.com/$account/$dist/wiki",
-        'bugtracker.web'
-            => "https://rt.cpan.org/Public/Dist/Display.html?Name=$dist",
-        'repository.url'
-            => "git://github.com/$account/$dist.git",
-    }]);
-
-    $self->add_plugins('ReadmeFromPod');
+    $self->add_plugins(qw/
+        MetaResourcesFromGit
+        ReadmeFromPod
+    /);
 
     my %basic_opts = (
         '-bundle' => '@Basic',
@@ -149,44 +74,36 @@ Dist::Zilla::PluginBundle::OLIVER - Dists like OLIVER's
 
 =head1 VERSION
 
-version 1.103581
+version 1.103592
 
 =head1 DESCRIPTION
 
-The is the plugin bundle that OLIVER uses. It is equivalent to:
+This is the plugin bundle that OLIVER uses. It is equivalent to:
 
- [MetaResources]
- homepage       = http://github.com/ACCOUNT/DIST/wiki
- bugtracker.web = https://rt.cpan.org/Public/Dist/Display.html?Name=DIST
- repository.url = git://github.com/ACCOUNT/DIST.git
- 
+ [MetaResourcesFromGit]
+  
  [ReadmeFromPod]
  [@Filter]
  -bundle = @Basic
  -remove = Readme
- 
+  
  [AutoVersion]
  [NextRelease]
  [PkgVersion]
  [PodWeaver]
  [AutoPrereqs]
- 
+  
  [PruneFiles]
  filenames = dist.ini
- 
+  
  [Git::CommitBuild]
  branch =
  release_branch = master
-
+  
  [@Git]
  commit_msg = %c
 
 =head1 CONFIGURATION
-
-In the above, C<DIST> will be substituted for the value of the C<name>
-option in your C<dist.ini> file. Also, C<ACCOUNT> will be substituted
-for your L<http://github.com> account name. Both of these can be overriden
-by providing the C<dist> or C<account> options to this Bundle in C<dist.ini>.
 
 If you provide the C<no_cpan> option with a true value to the bundle, then
 the upload to CPAN will be suppressed.

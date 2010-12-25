@@ -2,43 +2,35 @@ NAME
     Dist::Zilla::PluginBundle::OLIVER - Dists like OLIVER's
 
 VERSION
-    version 1.103581
+    version 1.103592
 
 DESCRIPTION
-    The is the plugin bundle that OLIVER uses. It is equivalent to:
+    This is the plugin bundle that OLIVER uses. It is equivalent to:
 
-     [MetaResources]
-     homepage       = http://github.com/ACCOUNT/DIST/wiki
-     bugtracker.web = https://rt.cpan.org/Public/Dist/Display.html?Name=DIST
-     repository.url = git://github.com/ACCOUNT/DIST.git
-     
+     [MetaResourcesFromGit]
+      
  [ReadmeFromPod]
      [@Filter]
      -bundle = @Basic
      -remove = Readme
-     
+      
  [AutoVersion]
      [NextRelease]
      [PkgVersion]
      [PodWeaver]
      [AutoPrereqs]
-     
+      
  [PruneFiles]
      filenames = dist.ini
-     
+      
  [Git::CommitBuild]
      branch =
      release_branch = master
-
-     [@Git]
+      
+ [@Git]
      commit_msg = %c
 
 CONFIGURATION
-    In the above, "DIST" will be substituted for the value of the "name"
-    option in your "dist.ini" file. Also, "ACCOUNT" will be substituted for
-    your <http://github.com> account name. Both of these can be overriden by
-    providing the "dist" or "account" options to this Bundle in "dist.ini".
-
     If you provide the "no_cpan" option with a true value to the bundle,
     then the upload to CPAN will be suppressed.
 

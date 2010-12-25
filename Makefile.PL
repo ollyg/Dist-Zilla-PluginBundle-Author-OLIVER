@@ -20,17 +20,16 @@ my %WriteMakefileArgs = (
   'LICENSE' => 'perl',
   'NAME' => 'Dist::Zilla::PluginBundle::OLIVER',
   'PREREQ_PM' => {
-    'Config::INI::Reader' => '0',
+    'Dist::Zilla::Plugin::MetaResourcesFromGit' => '0',
     'Dist::Zilla::Plugin::PodWeaver' => '0',
     'Dist::Zilla::Plugin::ReadmeFromPod' => '0',
     'Dist::Zilla::PluginBundle::Basic' => '0',
     'Dist::Zilla::PluginBundle::Filter' => '0',
     'Dist::Zilla::PluginBundle::Git' => '0',
     'Dist::Zilla::Role::PluginBundle::Easy' => '0',
-    'Moose' => '0',
-    'Path::Class' => '0'
+    'Moose' => '0'
   },
-  'VERSION' => '1.103581',
+  'VERSION' => '1.103592',
   'test' => {
     'TESTS' => ''
   }
