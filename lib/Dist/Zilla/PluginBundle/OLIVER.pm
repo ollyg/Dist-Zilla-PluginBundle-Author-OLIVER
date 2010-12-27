@@ -104,9 +104,23 @@ This is the plugin bundle that OLIVER uses. It is equivalent to:
  [Git::CommitBuild]
  branch =
  release_branch = master
+ message = <changelog section content>
   
  [@Git]
- commit_msg = %c
+ commit_msg = Bumped changelog following rel. v%v 
+
+=head1 RATIONALE
+
+The intention is to have a sane L<http://github.com> layout and at the same
+time supporting CPAN upload.
+
+Development take place on a C<devel> branch at GitHub and then releases are
+committed to the C<master> branch which is the default for user access. Commit
+messages to the C<master> are the content of the latest section in the
+C<Changes> file.
+
+Use of the L<MetaResourcesFromGit> plugin creates links at CPAN which point to
+the GitHub pages (the wiki page is used as the default Homepage).
 
 =head1 CONFIGURATION
 

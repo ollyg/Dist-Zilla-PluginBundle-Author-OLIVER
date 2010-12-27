@@ -1,5 +1,8 @@
 {{$NEXT}}
 
+  * Fix parsing of Changes file for CommitBuild message.
+  * Update the POD
+
 1.103610  2010-12-27 13:58:18 Europe/London
 
   * Change the commit messages to make more sense to me.
