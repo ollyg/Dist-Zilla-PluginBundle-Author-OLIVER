@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::OLIVER;
 BEGIN {
-  $Dist::Zilla::PluginBundle::OLIVER::VERSION = '1.103592';
+  $Dist::Zilla::PluginBundle::OLIVER::VERSION = '1.103610';
 }
 
 use Moose;
@@ -11,7 +11,7 @@ has no_cpan => (
   is      => 'ro',
   isa     => 'Bool',
   lazy    => 1,
-  default => sub { $_[0]->payload->{no_cpan} }
+  default => sub { $ENV{NO_CPAN} || $_[0]->payload->{no_cpan} }
 );
 
 sub configure {
@@ -51,12 +51,32 @@ sub configure {
     $self->add_plugins([ 'Git::CommitBuild' => {
         'branch' => '',
         'release_branch' => 'master',
+        'message' => ($self->_get_changes
+            || 'Build results of %h (on %b)'),
     }]);
 
     $self->add_bundle('@Git' => {
-        'commit_msg' => '%c'
+        'commit_msg' => 'Bumped changelog following rel. v%v'
     });
 }
+
+# stolen from Dist::Zilla::Plugin::Git::Commit
+sub _get_changes {
+    my $self = shift;
+
+    # parse changelog to find commit message
+    my $changelog = Dist::Zilla::File::OnDisk->new( { name => 'Changes' } );
+    my $newver    = '{{$NEXT}}';
+    my @content   =
+        grep { /^$newver(?:\s+|$)/ ... /^\S/ } # from newver to un-indented
+        split /\n/, $changelog->content;
+    shift @content; # drop the version line
+    # drop unindented last line and trailing blank lines
+    pop @content while ( @content && $content[-1] =~ /^(?:\S|\s*$)/ );
+
+    # return commit message
+    return join("\n", @content, ''); # add a final \n
+} # end _get_changes
 
 __PACKAGE__->meta->make_immutable;
 no Moose;
@@ -74,7 +94,7 @@ Dist::Zilla::PluginBundle::OLIVER - Dists like OLIVER's
 
 =head1 VERSION
 
-version 1.103592
+version 1.103610
 
 =head1 DESCRIPTION
 
@@ -105,8 +125,9 @@ This is the plugin bundle that OLIVER uses. It is equivalent to:
 
 =head1 CONFIGURATION
 
-If you provide the C<no_cpan> option with a true value to the bundle, then
-the upload to CPAN will be suppressed.
+If you provide the C<no_cpan> option with a true value to the bundle, or set
+the environment variable C<NO_CPAN> to a true value, then the upload to CPAN
+will be suppressed.
 
 =head1 TIPS
 

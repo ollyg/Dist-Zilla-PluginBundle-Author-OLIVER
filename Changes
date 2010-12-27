@@ -1,3 +1,8 @@
+1.103610  2010-12-27 13:58:18 Europe/London
+
+  * Change the commit messages to make more sense to me.
+  * Support NO_CPAN environment variable.
+
 1.103592  2010-12-25 01:00:37 Europe/London
 
   * Switch to using MetaResourcesFromGit
