@@ -48,12 +48,32 @@ sub configure {
     $self->add_plugins([ 'Git::CommitBuild' => {
         'branch' => '',
         'release_branch' => 'master',
+        'message' => ($self->_get_changes
+            || 'Build results of %h (on %b)');
     }]);
 
     $self->add_bundle('@Git' => {
-        'commit_msg' => '%c'
+        'commit_msg' => 'Bumped changelog following rel. v%v'
     });
 }
+
+# stolen from Dist::Zilla::Plugin::Git::Commit
+sub _get_changes {
+    my $self = shift;
+
+    # parse changelog to find commit message
+    my $changelog = Dist::Zilla::File::OnDisk->new( { name => 'Changes' } );
+    my $newver    = '{{$NEXT}}';
+    my @content   =
+        grep { /^$newver(?:\s+|$)/ ... /^\S/ } # from newver to un-indented
+        split /\n/, $changelog->content;
+    shift @content; # drop the version line
+    # drop unindented last line and trailing blank lines
+    pop @content while ( @content && $content[-1] =~ /^(?:\S|\s*$)/ );
+
+    # return commit message
+    return join("\n", @content, ''); # add a final \n
+} # end _get_changes
 
 __PACKAGE__->meta->make_immutable;
 no Moose;
