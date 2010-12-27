@@ -29,7 +29,7 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Role::PluginBundle::Easy' => '0',
     'Moose' => '0'
   },
-  'VERSION' => '1.103610',
+  'VERSION' => '1.103611',
   'test' => {
     'TESTS' => ''
   }

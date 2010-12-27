@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::OLIVER;
 BEGIN {
-  $Dist::Zilla::PluginBundle::OLIVER::VERSION = '1.103610';
+  $Dist::Zilla::PluginBundle::OLIVER::VERSION = '1.103611';
 }
 
 use Moose;
@@ -66,7 +66,7 @@ sub _get_changes {
 
     # parse changelog to find commit message
     my $changelog = Dist::Zilla::File::OnDisk->new( { name => 'Changes' } );
-    my $newver    = '{{$NEXT}}';
+    my $newver    = '{{\$NEXT}}';
     my @content   =
         grep { /^$newver(?:\s+|$)/ ... /^\S/ } # from newver to un-indented
         split /\n/, $changelog->content;
@@ -94,7 +94,7 @@ Dist::Zilla::PluginBundle::OLIVER - Dists like OLIVER's
 
 =head1 VERSION
 
-version 1.103610
+version 1.103611
 
 =head1 DESCRIPTION
 
@@ -119,9 +119,23 @@ This is the plugin bundle that OLIVER uses. It is equivalent to:
  [Git::CommitBuild]
  branch =
  release_branch = master
+ message = <changelog section content>
   
  [@Git]
- commit_msg = %c
+ commit_msg = Bumped changelog following rel. v%v 
+
+=head1 RATIONALE
+
+The intention is to have a sane L<http://github.com> layout and at the same
+time supporting CPAN upload.
+
+Development take place on a C<devel> branch at GitHub and then releases are
+committed to the C<master> branch which is the default for user access. Commit
+messages to the C<master> are the content of the latest section in the
+C<Changes> file.
+
+Use of the L<MetaResourcesFromGit> plugin creates links at CPAN which point to
+the GitHub pages (the wiki page is used as the default Homepage).
 
 =head1 CONFIGURATION
 
