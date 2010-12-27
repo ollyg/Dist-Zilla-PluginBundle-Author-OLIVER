@@ -63,7 +63,7 @@ sub _get_changes {
 
     # parse changelog to find commit message
     my $changelog = Dist::Zilla::File::OnDisk->new( { name => 'Changes' } );
-    my $newver    = '{{$NEXT}}';
+    my $newver    = '{{\$NEXT}}';
     my @content   =
         grep { /^$newver(?:\s+|$)/ ... /^\S/ } # from newver to un-indented
         split /\n/, $changelog->content;
