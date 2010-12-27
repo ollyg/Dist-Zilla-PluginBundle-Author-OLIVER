@@ -8,7 +8,7 @@ has no_cpan => (
   is      => 'ro',
   isa     => 'Bool',
   lazy    => 1,
-  default => sub { $_[0]->payload->{no_cpan} }
+  default => sub { $ENV{NO_CPAN} || $_[0]->payload->{no_cpan} }
 );
 
 sub configure {
@@ -49,7 +49,7 @@ sub configure {
         'branch' => '',
         'release_branch' => 'master',
         'message' => ($self->_get_changes
-            || 'Build results of %h (on %b)');
+            || 'Build results of %h (on %b)'),
     }]);
 
     $self->add_bundle('@Git' => {
@@ -110,8 +110,9 @@ This is the plugin bundle that OLIVER uses. It is equivalent to:
 
 =head1 CONFIGURATION
 
-If you provide the C<no_cpan> option with a true value to the bundle, then
-the upload to CPAN will be suppressed.
+If you provide the C<no_cpan> option with a true value to the bundle, or set
+the environment variable C<NO_CPAN> to a true value, then the upload to CPAN
+will be suppressed.
 
 =head1 TIPS
 
