@@ -2,7 +2,7 @@ NAME
     Dist::Zilla::PluginBundle::OLIVER - Dists like OLIVER's
 
 VERSION
-    version 1.103621
+    version 1.103622
 
 DESCRIPTION
     This is the plugin bundle that OLIVER uses. It is equivalent to:
@@ -19,8 +19,9 @@ DESCRIPTION
      [PkgVersion]
      [PickyPodWeaver]
      [AutoPrereqs]
-      
- [PruneFiles]
+     [MetaJSON]
+
+     [PruneFiles]
      filenames = dist.ini
       
  [Git::CommitBuild]

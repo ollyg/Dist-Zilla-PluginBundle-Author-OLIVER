@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::OLIVER;
 BEGIN {
-  $Dist::Zilla::PluginBundle::OLIVER::VERSION = '1.103621';
+  $Dist::Zilla::PluginBundle::OLIVER::VERSION = '1.103622';
 }
 
 use Moose;
@@ -52,6 +52,7 @@ sub configure {
         PkgVersion
         PickyPodWeaver
         AutoPrereqs
+        MetaJSON
     /);
 
     $self->add_plugins([ 'PruneFiles' => {
@@ -105,7 +106,7 @@ Dist::Zilla::PluginBundle::OLIVER - Dists like OLIVER's
 
 =head1 VERSION
 
-version 1.103621
+version 1.103622
 
 =head1 DESCRIPTION
 
@@ -123,7 +124,8 @@ This is the plugin bundle that OLIVER uses. It is equivalent to:
  [PkgVersion]
  [PickyPodWeaver]
  [AutoPrereqs]
-  
+ [MetaJSON]
+
  [PruneFiles]
  filenames = dist.ini
   
