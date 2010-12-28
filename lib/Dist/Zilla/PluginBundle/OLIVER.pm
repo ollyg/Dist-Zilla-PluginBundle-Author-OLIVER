@@ -36,7 +36,7 @@ sub configure {
         AutoVersion
         NextRelease
         PkgVersion
-        PodWeaver
+        PickyPodWeaver
         AutoPrereqs
     /);
 
@@ -95,7 +95,7 @@ This is the plugin bundle that OLIVER uses. It is equivalent to:
  [AutoVersion]
  [NextRelease]
  [PkgVersion]
- [PodWeaver]
+ [PickyPodWeaver]
  [AutoPrereqs]
   
  [PruneFiles]
@@ -119,8 +119,12 @@ committed to the C<master> branch which is the default for user access. Commit
 messages to the C<master> are the content of the latest section in the
 C<Changes> file.
 
-Use of the L<MetaResourcesFromGit> plugin creates links at CPAN which point to
-the GitHub pages (the wiki page is used as the default Homepage).
+Use of the L<Dist::Zilla::Plugin::MetaResourcesFromGit> plugin creates links
+at CPAN which point to the GitHub pages (the wiki page is used as the default
+Homepage).
+
+A minor customization to the L<Pod::Weaver> plugin restricts POD munging only
+to those files containing an C<ABSTRACT> statement.
 
 =head1 CONFIGURATION
 
