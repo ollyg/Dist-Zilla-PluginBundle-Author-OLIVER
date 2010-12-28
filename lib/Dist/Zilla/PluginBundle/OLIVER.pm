@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::OLIVER;
 BEGIN {
-  $Dist::Zilla::PluginBundle::OLIVER::VERSION = '1.103620';
+  $Dist::Zilla::PluginBundle::OLIVER::VERSION = '1.103621';
 }
 
 use Moose;
@@ -11,7 +11,15 @@ has no_cpan => (
   is      => 'ro',
   isa     => 'Bool',
   lazy    => 1,
-  default => sub { $ENV{NO_CPAN} || $_[0]->payload->{no_cpan} }
+  default => sub { $ENV{NO_CPAN} || $_[0]->payload->{no_cpan} || 0 }
+);
+
+# major version number to help skip legacy versions
+has major_version => (
+    is  => 'ro',
+    isa => 'Str',
+    lazy => 1,
+    default => sub { $ENV{M} || $_[0]->payload->{major_version} || 1 }
 );
 
 sub configure {
@@ -35,8 +43,11 @@ sub configure {
 
     $self->add_bundle('@Filter' => \%basic_opts);
 
+    $self->add_plugins([ 'AutoVersion' => {
+        'major' => $self->major_version
+    }]);
+
     $self->add_plugins(qw/
-        AutoVersion
         NextRelease
         PkgVersion
         PickyPodWeaver
@@ -94,7 +105,7 @@ Dist::Zilla::PluginBundle::OLIVER - Dists like OLIVER's
 
 =head1 VERSION
 
-version 1.103620
+version 1.103621
 
 =head1 DESCRIPTION
 
@@ -146,6 +157,9 @@ to those files containing an C<ABSTRACT> statement.
 If you provide the C<no_cpan> option with a true value to the bundle, or set
 the environment variable C<NO_CPAN> to a true value, then the upload to CPAN
 will be suppressed.
+
+If you provide a value to the C<major_version> option then it will be passed
+to the C<AutoVersion> Plugin (as the C<major> attribute).
 
 =head1 TIPS
 
