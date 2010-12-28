@@ -49,6 +49,7 @@ sub configure {
         PkgVersion
         PickyPodWeaver
         AutoPrereqs
+        MetaJSON
     /);
 
     $self->add_plugins([ 'PruneFiles' => {
@@ -108,7 +109,8 @@ This is the plugin bundle that OLIVER uses. It is equivalent to:
  [PkgVersion]
  [PickyPodWeaver]
  [AutoPrereqs]
-  
+ [MetaJSON]
+
  [PruneFiles]
  filenames = dist.ini
   
