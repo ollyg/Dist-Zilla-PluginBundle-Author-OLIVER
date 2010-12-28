@@ -26,10 +26,11 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::PluginBundle::Basic' => '0',
     'Dist::Zilla::PluginBundle::Filter' => '0',
     'Dist::Zilla::PluginBundle::Git' => '0',
+    'Dist::Zilla::Role::Plugin' => '0',
     'Dist::Zilla::Role::PluginBundle::Easy' => '0',
     'Moose' => '0'
   },
-  'VERSION' => '1.103611',
+  'VERSION' => '1.103620',
   'test' => {
     'TESTS' => ''
   }

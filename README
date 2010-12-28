@@ -2,7 +2,7 @@ NAME
     Dist::Zilla::PluginBundle::OLIVER - Dists like OLIVER's
 
 VERSION
-    version 1.103611
+    version 1.103620
 
 DESCRIPTION
     This is the plugin bundle that OLIVER uses. It is equivalent to:
@@ -17,7 +17,7 @@ DESCRIPTION
  [AutoVersion]
      [NextRelease]
      [PkgVersion]
-     [PodWeaver]
+     [PickyPodWeaver]
      [AutoPrereqs]
       
  [PruneFiles]
@@ -40,8 +40,12 @@ RATIONALE
     access. Commit messages to the "master" are the content of the latest
     section in the "Changes" file.
 
-    Use of the MetaResourcesFromGit plugin creates links at CPAN which point
-    to the GitHub pages (the wiki page is used as the default Homepage).
+    Use of the Dist::Zilla::Plugin::MetaResourcesFromGit plugin creates
+    links at CPAN which point to the GitHub pages (the wiki page is used as
+    the default Homepage).
+
+    A minor customization to the Pod::Weaver plugin restricts POD munging
+    only to those files containing an "ABSTRACT" statement.
 
 CONFIGURATION
     If you provide the "no_cpan" option with a true value to the bundle, or
