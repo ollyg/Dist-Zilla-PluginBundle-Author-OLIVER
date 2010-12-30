@@ -38,12 +38,13 @@
       "bugtracker" : {
          "web" : "https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-OLIVER"
       },
-      "homepage" : "http://github.com/ollyg/Dist-Zilla-PluginBundle-OLIVER/wiki",
+      "homepage" : "https://github.com/ollyg/Dist-Zilla-PluginBundle-OLIVER/wiki",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/ollyg/Dist-Zilla-PluginBundle-OLIVER.git"
+         "url" : "git://github.com/ollyg/Dist-Zilla-PluginBundle-OLIVER.git",
+         "web" : "https://github.com/ollyg/Dist-Zilla-PluginBundle-OLIVER"
       }
    },
-   "version" : "1.103622"
+   "version" : "1.103640"
 }
 

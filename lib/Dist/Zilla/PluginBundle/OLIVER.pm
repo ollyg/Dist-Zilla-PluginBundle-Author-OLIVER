@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::OLIVER;
 BEGIN {
-  $Dist::Zilla::PluginBundle::OLIVER::VERSION = '1.103622';
+  $Dist::Zilla::PluginBundle::OLIVER::VERSION = '1.103640';
 }
 
 use Moose;
@@ -20,6 +20,14 @@ has major_version => (
     isa => 'Str',
     lazy => 1,
     default => sub { $ENV{M} || $_[0]->payload->{major_version} || 1 }
+);
+
+# skip these dependencies
+has skip_deps => (
+    is  => 'ro',
+    isa => 'Str',
+    lazy => 1,
+    default => sub { $_[0]->payload->{skip_deps} || '' }
 );
 
 sub configure {
@@ -47,11 +55,14 @@ sub configure {
         'major' => $self->major_version
     }]);
 
+    $self->add_plugins([ 'AutoPrereqs' => {
+        'skip' => $self->skip_deps
+    }]);
+
     $self->add_plugins(qw/
         NextRelease
         PkgVersion
         PickyPodWeaver
-        AutoPrereqs
         MetaJSON
     /);
 
@@ -106,7 +117,7 @@ Dist::Zilla::PluginBundle::OLIVER - Dists like OLIVER's
 
 =head1 VERSION
 
-version 1.103622
+version 1.103640
 
 =head1 DESCRIPTION
 
@@ -162,6 +173,9 @@ will be suppressed.
 
 If you provide a value to the C<major_version> option then it will be passed
 to the C<AutoVersion> Plugin (as the C<major> attribute).
+
+If you provide a value to the C<skip_deps> option then it will be passed to
+the C<AutoPrereqs> Plugin (as the C<skip> attribute).
 
 =head1 TIPS
 

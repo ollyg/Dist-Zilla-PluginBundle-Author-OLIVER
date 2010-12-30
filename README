@@ -2,7 +2,7 @@ NAME
     Dist::Zilla::PluginBundle::OLIVER - Dists like OLIVER's
 
 VERSION
-    version 1.103622
+    version 1.103640
 
 DESCRIPTION
     This is the plugin bundle that OLIVER uses. It is equivalent to:
@@ -55,6 +55,9 @@ CONFIGURATION
 
     If you provide a value to the "major_version" option then it will be
     passed to the "AutoVersion" Plugin (as the "major" attribute).
+
+    If you provide a value to the "skip_deps" option then it will be passed
+    to the "AutoPrereqs" Plugin (as the "skip" attribute).
 
 TIPS
     Do not include a "NAME", "VERSION", "AUTHOR" or "LICENSE" POD section in
