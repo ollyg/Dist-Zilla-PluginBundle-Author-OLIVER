@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+  * Add skip_deps configuration option for AutoPrereqs
+
 1.103622  2010-12-28 20:45:51 Europe/London
 
   * Add MetaJSON Plugin
