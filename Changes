@@ -1,3 +1,7 @@
+1.110230  2011-01-23 10:11:17 Europe/London
+
+  * Rename from ::OLIVER to ::Author::OLIVER
+
 1.103640  2010-12-30 20:57:45 Europe/London
 
   * Add skip_deps configuration option for AutoPrereqs

@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "Dist-Zilla-PluginBundle-OLIVER",
+   "name" : "Dist-Zilla-PluginBundle-Author-OLIVER",
    "prereqs" : {
       "configure" : {
          "requires" : {
@@ -36,15 +36,15 @@
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-OLIVER"
+         "web" : "https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-Author-OLIVER"
       },
-      "homepage" : "https://github.com/ollyg/Dist-Zilla-PluginBundle-OLIVER/wiki",
+      "homepage" : "https://github.com/ollyg/Dist-Zilla-PluginBundle-Author-OLIVER/wiki",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/ollyg/Dist-Zilla-PluginBundle-OLIVER.git",
-         "web" : "https://github.com/ollyg/Dist-Zilla-PluginBundle-OLIVER"
+         "url" : "git://github.com/ollyg/Dist-Zilla-PluginBundle-Author-OLIVER.git",
+         "web" : "https://github.com/ollyg/Dist-Zilla-PluginBundle-Author-OLIVER"
       }
    },
-   "version" : "1.103640"
+   "version" : "1.110230"
 }
 

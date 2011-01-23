@@ -1,6 +1,6 @@
-package Dist::Zilla::PluginBundle::OLIVER;
+package Dist::Zilla::PluginBundle::Author::OLIVER;
 BEGIN {
-  $Dist::Zilla::PluginBundle::OLIVER::VERSION = '1.103640';
+  $Dist::Zilla::PluginBundle::Author::OLIVER::VERSION = '1.110230';
 }
 
 use Moose;
@@ -113,11 +113,11 @@ __END__
 
 =head1 NAME
 
-Dist::Zilla::PluginBundle::OLIVER - Dists like OLIVER's
+Dist::Zilla::PluginBundle::Author::OLIVER - Dists like OLIVER's
 
 =head1 VERSION
 
-version 1.103640
+version 1.110230
 
 =head1 DESCRIPTION
 
@@ -197,7 +197,7 @@ Oliver Gorwits <oliver@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Oliver Gorwits.
+This software is copyright (c) 2011 by Oliver Gorwits.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

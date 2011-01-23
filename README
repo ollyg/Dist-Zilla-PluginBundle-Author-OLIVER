@@ -1,8 +1,8 @@
 NAME
-    Dist::Zilla::PluginBundle::OLIVER - Dists like OLIVER's
+    Dist::Zilla::PluginBundle::Author::OLIVER - Dists like OLIVER's
 
 VERSION
-    version 1.103640
+    version 1.110230
 
 DESCRIPTION
     This is the plugin bundle that OLIVER uses. It is equivalent to:
@@ -77,7 +77,7 @@ AUTHOR
     Oliver Gorwits <oliver@cpan.org>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2010 by Oliver Gorwits.
+    This software is copyright (c) 2011 by Oliver Gorwits.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.

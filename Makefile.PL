@@ -15,10 +15,10 @@ my %WriteMakefileArgs = (
   'CONFIGURE_REQUIRES' => {
     'ExtUtils::MakeMaker' => '6.31'
   },
-  'DISTNAME' => 'Dist-Zilla-PluginBundle-OLIVER',
+  'DISTNAME' => 'Dist-Zilla-PluginBundle-Author-OLIVER',
   'EXE_FILES' => [],
   'LICENSE' => 'perl',
-  'NAME' => 'Dist::Zilla::PluginBundle::OLIVER',
+  'NAME' => 'Dist::Zilla::PluginBundle::Author::OLIVER',
   'PREREQ_PM' => {
     'Dist::Zilla::Plugin::MetaResourcesFromGit' => '0',
     'Dist::Zilla::Plugin::PodWeaver' => '0',
@@ -30,7 +30,7 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Role::PluginBundle::Easy' => '0',
     'Moose' => '0'
   },
-  'VERSION' => '1.103640',
+  'VERSION' => '1.110230',
   'test' => {
     'TESTS' => ''
   }
