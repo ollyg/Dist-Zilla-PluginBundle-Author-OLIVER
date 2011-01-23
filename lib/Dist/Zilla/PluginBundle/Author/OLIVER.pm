@@ -1,4 +1,4 @@
-package Dist::Zilla::PluginBundle::OLIVER;
+package Dist::Zilla::PluginBundle::Author::OLIVER;
 
 use Moose;
 with 'Dist::Zilla::Role::PluginBundle::Easy';

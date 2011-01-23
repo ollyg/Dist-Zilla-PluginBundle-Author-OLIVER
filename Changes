@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+  * Rename from ::OLIVER to ::Author::OLIVER
+
 1.103640  2010-12-30 20:57:45 Europe/London
 
   * Add skip_deps configuration option for AutoPrereqs
