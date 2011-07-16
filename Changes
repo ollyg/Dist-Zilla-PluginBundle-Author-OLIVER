@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+  * Better fix for skip_deps default value
+
 1.111970  2011-07-16 15:10:44 Europe/London
 
   * Change skip_deps default to be empty arrayref

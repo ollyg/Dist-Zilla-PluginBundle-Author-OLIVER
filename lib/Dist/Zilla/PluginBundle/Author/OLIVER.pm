@@ -22,9 +22,9 @@ has major_version => (
 # skip these dependencies
 has skip_deps => (
     is  => 'ro',
-    isa => 'ArrayRef[Str]',
+    isa => 'Maybe[Str]',
     lazy => 1,
-    default => sub { $_[0]->payload->{skip_deps} || [] }
+    default => sub { $_[0]->payload->{skip_deps} || undef }
 );
 
 sub configure {
@@ -53,7 +53,7 @@ sub configure {
     }]);
 
     $self->add_plugins([ 'AutoPrereqs' => {
-        'skip' => $self->skip_deps
+        'skip' => [ $self->skip_deps ]
     }]);
 
     $self->add_plugins(qw/
