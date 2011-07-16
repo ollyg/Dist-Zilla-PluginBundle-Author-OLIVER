@@ -22,9 +22,9 @@ has major_version => (
 # skip these dependencies
 has skip_deps => (
     is  => 'ro',
-    isa => 'Str',
+    isa => 'ArrayRef[Str]',
     lazy => 1,
-    default => sub { $_[0]->payload->{skip_deps} || '' }
+    default => sub { $_[0]->payload->{skip_deps} || [] }
 );
 
 sub configure {
