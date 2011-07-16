@@ -2,19 +2,19 @@ NAME
     Dist::Zilla::PluginBundle::Author::OLIVER - Dists like OLIVER's
 
 VERSION
-    version 1.110230
+    version 1.111970
 
 DESCRIPTION
     This is the plugin bundle that OLIVER uses. It is equivalent to:
 
      [MetaResourcesFromGit]
-      
- [ReadmeFromPod]
+  
+     [ReadmeFromPod]
      [@Filter]
      -bundle = @Basic
      -remove = Readme
-      
- [AutoVersion]
+  
+     [AutoVersion]
      [NextRelease]
      [PkgVersion]
      [PickyPodWeaver]
@@ -23,13 +23,13 @@ DESCRIPTION
 
      [PruneFiles]
      filenames = dist.ini
-      
- [Git::CommitBuild]
+  
+     [Git::CommitBuild]
      branch =
      release_branch = master
      message = <changelog section content>
-      
- [@Git]
+  
+     [@Git]
      commit_msg = Bumped changelog following rel. v%v
 
 RATIONALE

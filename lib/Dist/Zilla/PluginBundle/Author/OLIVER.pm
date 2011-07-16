@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::Author::OLIVER;
 BEGIN {
-  $Dist::Zilla::PluginBundle::Author::OLIVER::VERSION = '1.110230';
+  $Dist::Zilla::PluginBundle::Author::OLIVER::VERSION = '1.111970';
 }
 
 use Moose;
@@ -25,9 +25,9 @@ has major_version => (
 # skip these dependencies
 has skip_deps => (
     is  => 'ro',
-    isa => 'Str',
+    isa => 'ArrayRef[Str]',
     lazy => 1,
-    default => sub { $_[0]->payload->{skip_deps} || '' }
+    default => sub { $_[0]->payload->{skip_deps} || [] }
 );
 
 sub configure {
@@ -117,7 +117,7 @@ Dist::Zilla::PluginBundle::Author::OLIVER - Dists like OLIVER's
 
 =head1 VERSION
 
-version 1.110230
+version 1.111970
 
 =head1 DESCRIPTION
 

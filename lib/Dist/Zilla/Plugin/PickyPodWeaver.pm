@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::PickyPodWeaver;
 BEGIN {
-  $Dist::Zilla::Plugin::PickyPodWeaver::VERSION = '1.110230';
+  $Dist::Zilla::Plugin::PickyPodWeaver::VERSION = '1.111970';
 }
 
 use Moose;

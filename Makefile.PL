@@ -4,7 +4,7 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
@@ -13,7 +13,7 @@ my %WriteMakefileArgs = (
   'AUTHOR' => 'Oliver Gorwits <oliver@cpan.org>',
   'BUILD_REQUIRES' => {},
   'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+    'ExtUtils::MakeMaker' => '6.30'
   },
   'DISTNAME' => 'Dist-Zilla-PluginBundle-Author-OLIVER',
   'EXE_FILES' => [],
@@ -25,12 +25,9 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Plugin::ReadmeFromPod' => '0',
     'Dist::Zilla::PluginBundle::Basic' => '0',
     'Dist::Zilla::PluginBundle::Filter' => '0',
-    'Dist::Zilla::PluginBundle::Git' => '0',
-    'Dist::Zilla::Role::Plugin' => '0',
-    'Dist::Zilla::Role::PluginBundle::Easy' => '0',
-    'Moose' => '0'
+    'Dist::Zilla::PluginBundle::Git' => '0'
   },
-  'VERSION' => '1.110230',
+  'VERSION' => '1.111970',
   'test' => {
     'TESTS' => ''
   }
