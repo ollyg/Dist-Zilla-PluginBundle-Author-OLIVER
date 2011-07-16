@@ -27,7 +27,7 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::PluginBundle::Filter' => '0',
     'Dist::Zilla::PluginBundle::Git' => '0'
   },
-  'VERSION' => '1.111970',
+  'VERSION' => '1.111971',
   'test' => {
     'TESTS' => ''
   }

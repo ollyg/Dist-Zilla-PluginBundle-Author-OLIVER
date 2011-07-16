@@ -2,7 +2,7 @@ NAME
     Dist::Zilla::PluginBundle::Author::OLIVER - Dists like OLIVER's
 
 VERSION
-    version 1.111970
+    version 1.111971
 
 DESCRIPTION
     This is the plugin bundle that OLIVER uses. It is equivalent to:
