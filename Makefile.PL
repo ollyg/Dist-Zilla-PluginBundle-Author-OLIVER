@@ -25,9 +25,12 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Plugin::ReadmeFromPod' => '0',
     'Dist::Zilla::PluginBundle::Basic' => '0',
     'Dist::Zilla::PluginBundle::Filter' => '0',
-    'Dist::Zilla::PluginBundle::Git' => '0'
+    'Dist::Zilla::PluginBundle::Git' => '0',
+    'Dist::Zilla::Role::Plugin' => '0',
+    'Dist::Zilla::Role::PluginBundle::Easy' => '0',
+    'Moose' => '0'
   },
-  'VERSION' => '1.111971',
+  'VERSION' => '1.111980',
   'test' => {
     'TESTS' => ''
   }

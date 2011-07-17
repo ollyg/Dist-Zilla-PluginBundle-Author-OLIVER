@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::Author::OLIVER;
 BEGIN {
-  $Dist::Zilla::PluginBundle::Author::OLIVER::VERSION = '1.111971';
+  $Dist::Zilla::PluginBundle::Author::OLIVER::VERSION = '1.111980';
 }
 
 use Moose;
@@ -8,10 +8,10 @@ with 'Dist::Zilla::Role::PluginBundle::Easy';
 
 # if set, trigger FakeRelease instead of UploadToCPAN
 has no_cpan => (
-  is      => 'ro',
-  isa     => 'Bool',
-  lazy    => 1,
-  default => sub { $ENV{NO_CPAN} || $_[0]->payload->{no_cpan} || 0 }
+    is => 'ro',
+    isa => 'Bool',
+    lazy => 1,
+    default => sub { $ENV{NO_CPAN} || $_[0]->payload->{no_cpan} || 0 }
 );
 
 # major version number to help skip legacy versions
@@ -27,7 +27,7 @@ has skip_deps => (
     is  => 'ro',
     isa => 'Maybe[Str]',
     lazy => 1,
-    default => sub { $_[0]->payload->{skip_deps} || undef }
+    default => sub { $_[0]->payload->{skip_deps} || '' },
 );
 
 sub configure {
@@ -56,7 +56,8 @@ sub configure {
     }]);
 
     $self->add_plugins([ 'AutoPrereqs' => {
-        'skip' => [ $self->skip_deps ]
+        length $self->skip_deps ? 
+            ('skip' => [ $self->skip_deps ]) : ()
     }]);
 
     $self->add_plugins(qw/
@@ -105,10 +106,7 @@ __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
 
-# ABSTRACT: Dists like OLIVER's
 
-
-__END__
 =pod
 
 =head1 NAME
@@ -117,7 +115,7 @@ Dist::Zilla::PluginBundle::Author::OLIVER - Dists like OLIVER's
 
 =head1 VERSION
 
-version 1.111971
+version 1.111980
 
 =head1 DESCRIPTION
 
@@ -203,4 +201,9 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+
+__END__
+
+# ABSTRACT: Dists like OLIVER's
 
