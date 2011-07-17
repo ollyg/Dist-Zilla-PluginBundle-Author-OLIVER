@@ -5,10 +5,10 @@ with 'Dist::Zilla::Role::PluginBundle::Easy';
 
 # if set, trigger FakeRelease instead of UploadToCPAN
 has no_cpan => (
-  is      => 'ro',
-  isa     => 'Bool',
-  lazy    => 1,
-  default => sub { $ENV{NO_CPAN} || $_[0]->payload->{no_cpan} || 0 }
+    is => 'ro',
+    isa => 'Bool',
+    lazy => 1,
+    default => sub { $ENV{NO_CPAN} || $_[0]->payload->{no_cpan} || 0 }
 );
 
 # major version number to help skip legacy versions
@@ -24,7 +24,7 @@ has skip_deps => (
     is  => 'ro',
     isa => 'Maybe[Str]',
     lazy => 1,
-    default => sub { $_[0]->payload->{skip_deps} || undef }
+    default => sub { $_[0]->payload->{skip_deps} || '' },
 );
 
 sub configure {
@@ -53,7 +53,8 @@ sub configure {
     }]);
 
     $self->add_plugins([ 'AutoPrereqs' => {
-        'skip' => [ $self->skip_deps ]
+        length $self->skip_deps ? 
+            ('skip' => [ $self->skip_deps ]) : ()
     }]);
 
     $self->add_plugins(qw/
@@ -101,6 +102,7 @@ sub _get_changes {
 __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
+__END__
 
 # ABSTRACT: Dists like OLIVER's
 
