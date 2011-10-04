@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::Author::OLIVER;
 BEGIN {
-  $Dist::Zilla::PluginBundle::Author::OLIVER::VERSION = '1.111980';
+  $Dist::Zilla::PluginBundle::Author::OLIVER::VERSION = '1.112770';
 }
 
 use Moose;
@@ -30,6 +30,14 @@ has skip_deps => (
     default => sub { $_[0]->payload->{skip_deps} || '' },
 );
 
+# skip these dependencies
+has skip_files => (
+    is  => 'ro',
+    isa => 'Maybe[Str]',
+    lazy => 1,
+    default => sub { $_[0]->payload->{skip_files} || '' },
+);
+
 sub configure {
     my $self = shift;
 
@@ -56,7 +64,7 @@ sub configure {
     }]);
 
     $self->add_plugins([ 'AutoPrereqs' => {
-        length $self->skip_deps ? 
+        length $self->skip_deps ?
             ('skip' => [ $self->skip_deps ]) : ()
     }]);
 
@@ -68,7 +76,9 @@ sub configure {
     /);
 
     $self->add_plugins([ 'PruneFiles' => {
-        'filenames' => 'dist.ini'
+        'filenames' => 'dist.ini',
+        length $self->skip_files ?
+            ('match' => [ $self->skip_files ]) : ()
     }]);
 
     # CommitBuild -must- come before @Git
@@ -115,7 +125,7 @@ Dist::Zilla::PluginBundle::Author::OLIVER - Dists like OLIVER's
 
 =head1 VERSION
 
-version 1.111980
+version 1.112770
 
 =head1 DESCRIPTION
 
@@ -170,10 +180,13 @@ the environment variable C<NO_CPAN> to a true value, then the upload to CPAN
 will be suppressed.
 
 If you provide a value to the C<major_version> option then it will be passed
-to the C<AutoVersion> Plugin (as the C<major> attribute).
+to the C<AutoVersion> Plugin as the C<major> attribute.
 
 If you provide a value to the C<skip_deps> option then it will be passed to
-the C<AutoPrereqs> Plugin (as the C<skip> attribute).
+the C<AutoPrereqs> Plugin as the C<skip> attribute.
+
+If you provide a value to the C<skip_files> option then it will be passed to
+the C<PruneFiles> Plugin as the C<match> attribute.
 
 =head1 TIPS
 

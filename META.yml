@@ -26,4 +26,4 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-Author-OLIVER
   homepage: https://github.com/ollyg/Dist-Zilla-PluginBundle-Author-OLIVER/wiki
   repository: git://github.com/ollyg/Dist-Zilla-PluginBundle-Author-OLIVER.git
-version: 1.111980
+version: 1.112770

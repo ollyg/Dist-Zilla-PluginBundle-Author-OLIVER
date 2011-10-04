@@ -1,3 +1,7 @@
+1.112770  2011-10-04 07:31:21 Europe/London
+
+  * Add skip_files config option for PruneFiles/match
+
 1.111980  2011-07-17 16:54:53 Europe/London
 
   * Will this be the final skip_deps fix?
