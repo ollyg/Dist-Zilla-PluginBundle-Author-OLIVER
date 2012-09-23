@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+  * Add skip_plugin option to remove items from @Basic bundle
+
 1.112770  2011-10-04 07:31:21 Europe/London
 
   * Add skip_files config option for PruneFiles/match
