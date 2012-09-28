@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::Author::OLIVER;
 BEGIN {
-  $Dist::Zilla::PluginBundle::Author::OLIVER::VERSION = '1.112770';
+  $Dist::Zilla::PluginBundle::Author::OLIVER::VERSION = '1.122720';
 }
 
 use Moose;
@@ -30,13 +30,23 @@ has skip_deps => (
     default => sub { $_[0]->payload->{skip_deps} || '' },
 );
 
-# skip these dependencies
+# skip these files
 has skip_files => (
     is  => 'ro',
     isa => 'Maybe[Str]',
     lazy => 1,
     default => sub { $_[0]->payload->{skip_files} || '' },
 );
+
+# skip these plugins from @Basic bundle
+has skip_plugin => (
+    is => 'ro',
+    isa => 'ArrayRef[Str]',
+    lazy => 1,
+    default => sub { $_[0]->payload->{skip_plugin} || [] },
+);
+
+sub mvp_multivalue_args { qw(skip_plugin) }
 
 sub configure {
     my $self = shift;
@@ -48,12 +58,12 @@ sub configure {
 
     my %basic_opts = (
         '-bundle' => '@Basic',
-        '-remove' => [ 'Readme' ],
+        '-remove' => [ 'Readme', @{ $self->skip_plugin } ],
     );
 
     if ($self->no_cpan) {
         $basic_opts{'-remove'}
-            = [ 'Readme', 'UploadToCPAN' ];
+            = [ 'Readme', @{ $self->skip_plugin }, 'UploadToCPAN' ];
         $self->add_plugins('FakeRelease');
     }
 
@@ -125,7 +135,7 @@ Dist::Zilla::PluginBundle::Author::OLIVER - Dists like OLIVER's
 
 =head1 VERSION
 
-version 1.112770
+version 1.122720
 
 =head1 DESCRIPTION
 
@@ -188,6 +198,10 @@ the C<AutoPrereqs> Plugin as the C<skip> attribute.
 If you provide a value to the C<skip_files> option then it will be passed to
 the C<PruneFiles> Plugin as the C<match> attribute.
 
+If you provide one or more instaces of the C<skip_plugin> option, then the
+values will be removed from the list of plugins imported from the C<@Basic>
+Plugin Bundle.
+
 =head1 TIPS
 
 Do not include a C<NAME>, C<VERSION>, C<AUTHOR> or C<LICENSE> POD section in
@@ -208,7 +222,7 @@ Oliver Gorwits <oliver@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Oliver Gorwits.
+This software is copyright (c) 2012 by Oliver Gorwits.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

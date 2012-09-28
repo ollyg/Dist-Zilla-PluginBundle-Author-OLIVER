@@ -2,7 +2,7 @@ NAME
     Dist::Zilla::PluginBundle::Author::OLIVER - Dists like OLIVER's
 
 VERSION
-    version 1.112770
+    version 1.122720
 
 DESCRIPTION
     This is the plugin bundle that OLIVER uses. It is equivalent to:
@@ -62,6 +62,10 @@ CONFIGURATION
     If you provide a value to the "skip_files" option then it will be passed
     to the "PruneFiles" Plugin as the "match" attribute.
 
+    If you provide one or more instaces of the "skip_plugin" option, then
+    the values will be removed from the list of plugins imported from the
+    @Basic Plugin Bundle.
+
 TIPS
     Do not include a "NAME", "VERSION", "AUTHOR" or "LICENSE" POD section in
     your code, they will be provided automatically. However please do
@@ -80,7 +84,7 @@ AUTHOR
     Oliver Gorwits <oliver@cpan.org>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2011 by Oliver Gorwits.
+    This software is copyright (c) 2012 by Oliver Gorwits.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.
